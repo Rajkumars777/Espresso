@@ -8,40 +8,64 @@ export const metadata: Metadata = {
 };
 const BlogData = [
   {
-    path: "birthday", // Path set as number
+    path: "birthday",
     mainImage: "/images/blog/bd.png",
-    title: "BirthDay Event",
-    metadata: "Details about Birthday Event",
+    title: "BIRTHDAY EVENT",
   },
   {
-    path: 2,
-    mainImage: "/images/blog/blog-02.png",
-    title: "Wedding Event",
-    metadata: "Details about Wedding Event",
+    path: "wedding",
+    mainImage: "/images/blog/wed.png",
+    title: " WEDDING EVENT",
   },
   {
-    path: 3,
+    path: "engage",
+    mainImage: "/images/blog/engage.png",
+    title: "ENGAGEMENT CEREMONIES",
+  },
+  {
+    path: "",
+    mainImage: "/images/blog/bs.png",
+    title: "BABY SHOWER EVENTS",
+  },
+  {
+    path: "",
+    mainImage: "/images/blog/ce.png",
+    title: "CORPORATE EVENT",
+  },
+  {
+    path: "",
+    mainImage: "/images/blog/se.png",
+    title: "SCHOOL EVENT",
+  },
+  {
+    path:"",
     mainImage: "/images/blog/blog-03.png",
-    title: "Engagement Event",
-    metadata: "Details about Engagement Event",
+    title: "CULTURAL EVENT ",
   },
   {
-    path: 4,
+    path: "",
     mainImage: "/images/blog/blog-03.png",
-    title: "Baby Shower Event",
-    metadata: "Details about Baby Shower Event",
+    title: "ACADEMIC CONFERENCES",
   },
   {
-    path: 5,
+    path: "",
     mainImage: "/images/blog/blog-04.png",
-    title: "Event05",
-    metadata: "Details about Event05",
+    title: "MUSIC AND CONCERT EVENTS",
   },
   {
-    path: 6,
+    path: "",
     mainImage: "/images/blog/blog-01.png",
-    title: "Event06",
-    metadata: "Details about Event06",
+    title: "FASHION SHOWS",
+  },
+  {
+    path: "",
+    mainImage: "/images/blog/blog-01.png",
+    title: "STARTUP & INVESTOR CONFERENCES",
+  },
+  {
+    path: "",
+    mainImage: "/images/blog/blog-01.png",
+    title: "RELIGIOUS AND SPIRITUAL EVENTS",
   },
 ];
 const BlogPage = async () => {

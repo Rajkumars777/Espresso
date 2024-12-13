@@ -250,14 +250,14 @@ const Header = () => {
             </div>
 
             <Link
-              href="https://github.com/NextJSTemplates/solid-nextjs"
+              href="/auth/signin"
               className="text-regular font-medium text-waterloo dark:fill-white hover:text-primary"
             >
               {t('login')}
             </Link>
 
             <Link
-              href="https://nextjstemplates.com/templates/solid"
+              href="/auth/signup"
               className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white dark:fill-white duration-300 ease-in-out hover:bg-primaryho"
             >
               {t('signup')}

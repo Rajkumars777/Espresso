@@ -3980,13 +3980,13 @@ fraction.js@^4.3.6:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
-framer-motion@^11.13.5, "framer-motion@>=11.5.6 || >=12.0.0-alpha.1":
-  version "11.13.5"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.13.5.tgz"
-  integrity sha512-rArI0zPU9VkpS3Wt0J7dmRxAFUWtzPWoSofNQAP0UO276CmJ+Xlf5xN19GMw3w2QsdrS2sU+0+Q2vtuz4IEZaw==
+framer-motion@^11.14.1, "framer-motion@>=11.5.6 || >=12.0.0-alpha.1":
+  version "11.14.1"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-11.14.1.tgz"
+  integrity sha512-6B7jC54zgnefmUSa2l4gkc/2CrqclHL9AUbDxxRfbFyWKLd+4guUYtEabzoYMU8G5ICZ6CdJdydOLy74Ekd7ag==
   dependencies:
-    motion-dom "^11.13.0"
-    motion-utils "^11.13.0"
+    motion-dom "^11.14.1"
+    motion-utils "^11.14.1"
     tslib "^2.4.0"
 
 fs-extra@^11.1.0:
@@ -4892,15 +4892,15 @@ mkdirp@^2.1.6:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-2.1.6.tgz"
   integrity sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==
 
-motion-dom@^11.13.0:
-  version "11.13.0"
-  resolved "https://registry.npmjs.org/motion-dom/-/motion-dom-11.13.0.tgz"
-  integrity sha512-Oc1MLGJQ6nrvXccXA89lXtOqFyBmvHtaDcTRGT66o8Czl7nuA8BeHAd9MQV1pQKX0d2RHFBFaw5g3k23hQJt0w==
+motion-dom@^11.14.1:
+  version "11.14.1"
+  resolved "https://registry.npmjs.org/motion-dom/-/motion-dom-11.14.1.tgz"
+  integrity sha512-Y68tHWR0d2HxHDskNxpeY3pzUdz7L/m5A8TV7VSE6Sq4XUNJdZV8zXco1aeAQ44o48u0i8UKjt8TGIqkZSQ8ew==
 
-motion-utils@^11.13.0:
-  version "11.13.0"
-  resolved "https://registry.npmjs.org/motion-utils/-/motion-utils-11.13.0.tgz"
-  integrity sha512-lq6TzXkH5c/ysJQBxgLXgM01qwBH1b4goTPh57VvZWJbVJZF/0SB31UWEn4EIqbVPf3au88n2rvK17SpDTja1A==
+motion-utils@^11.14.1:
+  version "11.14.1"
+  resolved "https://registry.npmjs.org/motion-utils/-/motion-utils-11.14.1.tgz"
+  integrity sha512-R6SsehArpkEBUHydkcwQ/8ij8k2PyKWAJ7Y8PN3ztnFwq5RBU3zIamYH6esTp09OgsbwB57mBEZ9DORaN1WTxQ==
 
 ms@^2.1.1, ms@2.1.2:
   version "2.1.2"
@@ -5387,10 +5387,10 @@ react-hot-toast@^2.4.1:
   dependencies:
     goober "^2.1.10"
 
-react-i18next@^15.1.4:
-  version "15.1.4"
-  resolved "https://registry.npmjs.org/react-i18next/-/react-i18next-15.1.4.tgz"
-  integrity sha512-2tai71gmehbvl9ZIqPMqlCCkm/cbeV1G4STpmM3C8Uzo6T2l8jDvZxEVSsQKt8blP9X34iRFP/k1ROqG2296MQ==
+react-i18next@^15.2.0:
+  version "15.2.0"
+  resolved "https://registry.npmjs.org/react-i18next/-/react-i18next-15.2.0.tgz"
+  integrity sha512-iJNc8111EaDtVTVMKigvBtPHyrJV+KblWG73cUxqp+WmJCcwkzhWNFXmkAD5pwP2Z4woeDj/oXDdbjDsb3Gutg==
   dependencies:
     "@babel/runtime" "^7.25.0"
     html-parse-stringify "^3.0.1"

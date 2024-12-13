@@ -63,7 +63,7 @@ or
 ```bash
     yarn install
  ```
-npm install framer-motion
+npm install framer-motion && npm run dev
 npm install framer-motion@latest
 npm install @nextui-org/react --force
 npm install @nextui-org/react --legacy-peer-deps
