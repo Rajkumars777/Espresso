@@ -68,6 +68,12 @@ npm install framer-motion@latest
 npm install @nextui-org/react --force
 npm install @nextui-org/react --legacy-peer-deps
 npm install react-i18next i18next
+npm install lucide-react
+npm install react-scroll
+npm install next
+npm install axios
+npm install react-toastify
+
 
 You can start the project on the local server
     

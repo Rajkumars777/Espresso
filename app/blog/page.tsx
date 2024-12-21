@@ -1,6 +1,11 @@
-import React from "react";
-import SectionHeader from "../Common/SectionHeader";
-import BlogItem from "./BlogItem";
+"use client";
+import BlogItem from "@/components/Blog/BlogItem";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Lines from "@/components/Lines";
+import ScrollToTop from "@/components/ScrollToTop";
+import { ThemeProvider } from "next-themes";
+
 const BlogData = [
   {
     path: "birthday",
@@ -63,34 +68,32 @@ const BlogData = [
     title: "RELIGIOUS AND SPIRITUAL EVENTS",
   },
 ];
-const Blog = async () => {
+const BlogPage = async () => {
   return (
     <>
-    <section className="py-20 lg:py-25 xl:py-30">
-      <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
-        {/* Section Title Start */}
-        <div className="animate_top mx-auto text-center">
-          <SectionHeader
-            headerInfo={{
-              title: `OUR SERVICES`,
-              subtitle: `Comprehensive Event Planning & Management`,
-              description: `Our expert team handles every detail, ensuring a seamless and unforgettable experience. Let us bring your vision to life with personalized services tailored to your needs.`,
-            }}
-          />
+     <ThemeProvider
+          enableSystem={false}
+          attribute="class"
+          defaultTheme="light"
+        >
+          <Lines />
+          <Header />
+      {/* <!-- ===== Blog Grid Start ===== --> */}
+      <section className="py-20 lg:py-25 xl:py-30">
+        <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
+          <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+            {BlogData.map((post, key) => (
+              <BlogItem key={key} blog={post} />
+            ))}
+          </div>
         </div>
-        {/* Section Title End */}
-      </div>
-
-      <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
-        <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-          {BlogData.slice(0, 6).map((blog, key) => (
-            <BlogItem blog={blog} key={key} />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+      {/* <!-- ===== Blog Grid End ===== --> */}
+      <Footer />
+          <ScrollToTop />
+        </ThemeProvider>
     </>
   );
 };
 
-export default Blog;
+export default BlogPage;

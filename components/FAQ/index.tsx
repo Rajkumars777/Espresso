@@ -1,10 +1,90 @@
+// index.tsx
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import FAQItem from "./FAQItem";
-import faqData from "./faqData";
 
+// FAQItem Component
+type FaqData = {
+  activeFaq: number;
+  id: number;
+  handleFaqToggle: (id: number) => void;
+  quest: string;
+  ans: string;
+};
+
+const FAQItem = ({ faqData }: { faqData: FaqData }) => {
+  const { activeFaq, id, handleFaqToggle, quest, ans } = faqData;
+
+  return (
+    <div className="flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
+      <button
+        onClick={() => {
+          handleFaqToggle(id);
+        }}
+        className="flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
+      >
+        {quest}
+        {activeFaq === id ? (
+          <svg
+            width="18"
+            height="4"
+            viewBox="0 0 18 4"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.1666 0.833374H10.1666H7.83331H0.833313V3.16671H7.83331H10.1666H17.1666V0.833374Z"
+              fill="currentColor"
+            />
+          </svg>
+        ) : (
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.83331 7.83337V0.833374H10.1666V7.83337H17.1666V10.1667H10.1666V17.1667H7.83331V10.1667H0.833313V7.83337H7.83331Z"
+              fill="currentColor"
+            />
+          </svg>
+        )}
+      </button>
+      <p
+        className={`border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 ${
+          activeFaq === id ? "block" : "hidden"
+        }`}
+      >
+        {ans}
+      </p>
+    </div>
+  );
+};
+
+// FAQ Data
+const faqData = [
+  {
+    id: 1,
+    quest: "What services do you offer for event management?",
+    ans: "We offer comprehensive event management services, including venue booking, catering, decoration, entertainment, and event coordination, ensuring a seamless experience from start to finish.",
+  },
+  {
+    id: 2,
+    quest: "How do I book an event with your company?",
+    ans: "You can easily book an event by reaching out to us through our website or by contacting our team directly. We will guide you through the entire process, from choosing the right services to finalizing the details.",
+  },
+  {
+    id: 3,
+    quest: "Can you customize event packages based on my budget?",
+    ans: "Absolutely! We offer flexible event packages that can be customized according to your budget. Our team works closely with you to provide the best options that fit your requirements without compromising on quality.",
+  },
+];
+
+
+// Main FAQ Component
 const FAQ = () => {
   const [activeFaq, setActiveFaq] = useState(1);
 
@@ -14,7 +94,7 @@ const FAQ = () => {
 
   return (
     <>
-      {/* <!-- ===== FAQ Start ===== --> */}
+      {/* FAQ Section */}
       <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="relative mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
           <div className="absolute -bottom-16 -z-1 h-full w-full">
@@ -109,7 +189,7 @@ const FAQ = () => {
           </div>
         </div>
       </section>
-      {/* <!-- ===== FAQ End ===== --> */}
+      {/* FAQ Section End */}
     </>
   );
 };

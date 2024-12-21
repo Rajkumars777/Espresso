@@ -1,87 +1,67 @@
-"use client";
+// components/Header.tsx
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useTranslation, initReactI18next } from 'react-i18next';
-import i18n from 'i18next';
-
-import ThemeToggler from "./ThemeToggler";
-import menuData from "./menuData";
-
-// Initialize i18n
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: {
-        translation: {
-          menu: menuData.reduce((acc, item) => {
-            acc[item.title.toLowerCase().replace(/\s+/g, '_')] = item.title;
-            if (item.submenu) {
-              item.submenu.forEach(subItem => {
-                acc[subItem.title.toLowerCase().replace(/\s+/g, '_')] = subItem.title;
-              });
-            }
-            return acc;
-          }, {}),
-          login: "LogIn",
-          signup: "Signup",
-          language_selector: {
-            en: "English",
-            ta: "தமிழ்"
-          }
-        }
-      },
-      ta: {
-        translation: {
-          menu: menuData.reduce((acc, item) => {
-            acc[item.title.toLowerCase().replace(/\s+/g, '_')] = getTamilTranslation(item.title);
-            if (item.submenu) {
-              item.submenu.forEach(subItem => {
-                acc[subItem.title.toLowerCase().replace(/\s+/g, '_')] = getTamilTranslation(subItem.title);
-              });
-            }
-            return acc;
-          }, {}),
-          login: "உள்நுழைவு",
-          signup: "பதிவு",
-          language_selector: {
-            en: "English",
-            ta: "தமிழ்"
-          }
-        }
-      }
-    },
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false
-    }
-  });
-
-// Simple translation helper (you might want to use a more sophisticated translation service)
-function getTamilTranslation(englishText) {
-  const translations: {[key: string]: string} = {
-    // Add manual translations here
-    'Home': 'முகப்பு',
-    'About': 'பற்றி',
-    'Services': 'சேவைகள்',
-    'Blog': 'வலைப்பதிவு',
-    'Contact': 'தொடர்பு',
-  };
-  return translations[englishText] || englishText;
-}
+import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import AuthButtons from "../AuthButtons"; // Import the AuthButtons component
+import { ThemeToggler } from '../ThemeToggler'; // Import ThemeToggler component
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
-  const [language, setLanguage] = useState('en');
-  const { t, i18n: i18nInstance } = useTranslation();
-
+  const [isLogin, setIsLogin] = useState(false);
+  const [reloadTriggered, setReloadTriggered] = useState(true);
   const pathUrl = usePathname();
+  const router = useRouter();
+  const { theme, setTheme } = useTheme();
 
-  // Sticky menu
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/auth/user", {
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error("Not authenticated");
+        }
+
+        const content = await response.json();
+        setIsLogin(true);
+      } catch (e) {
+        setIsLogin(false);
+      }
+    };
+
+    fetchUser();
+  }, [router]);
+
+  useEffect(() => {
+    if (!reloadTriggered) {
+      setReloadTriggered(true);
+      window.location.reload();
+    }
+  }, [isLogin, reloadTriggered]);
+
+  const logout = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        setIsLogin(false);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   const handleStickyMenu = () => {
     if (window.scrollY >= 80) {
       setStickyMenu(true);
@@ -90,27 +70,18 @@ const Header = () => {
     }
   };
 
-  // Toggle language
-  const changeLanguage = (selectedLanguage: string) => {
-    setLanguage(selectedLanguage);
-    i18nInstance.changeLanguage(selectedLanguage);
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleStickyMenu);
-    
-    // Cleanup listener
+    window.addEventListener('scroll', handleStickyMenu);
     return () => {
-      window.removeEventListener("scroll", handleStickyMenu);
+      window.removeEventListener('scroll', handleStickyMenu);
     };
   }, []);
 
   return (
     <header
-      className={`fixed left-0 top-0 z-99999 w-full py-7 
-        ${stickyMenu ? "backdrop-blur-md bg-white/50 !py-4 shadow transition duration-100 dark:bg-black/50" : "bg-transparent"}
-        transition-all duration-300 ease-in-out
-      `}
+      className={`fixed left-0 top-0 z-99999 w-full py-7
+      ${stickyMenu ? "backdrop-blur-md bg-white/2 !py-4  transition-all duration-300 ease-in-out dark:bg-black/2" : "bg-transparent"}
+      transition-all duration-300 ease-in-out`}
     >
       <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
         <div className="flex w-full items-center justify-between xl:w-1/4">
@@ -131,7 +102,6 @@ const Header = () => {
             />
           </a>
 
-          {/* Hamburger Toggle BTN */}
           <button
             aria-label="hamburger Toggler"
             className="block xl:hidden"
@@ -140,7 +110,7 @@ const Header = () => {
             <span className="relative block h-5.5 w-5.5 cursor-pointer">
               <span className="absolute right-0 block h-full w-full">
                 <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm  delay-[0] duration-200 ease-in-out bg-blue-600 ${
+                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm delay-[0] duration-200 ease-in-out bg-blue-600 ${
                     !navigationOpen ? "!w-full delay-300" : "w-0"
                   }`}
                 ></span>
@@ -150,7 +120,7 @@ const Header = () => {
                   }`}
                 ></span>
                 <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm  delay-200 duration-200 ease-in-out bg-blue-600 ${
+                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm delay-200 duration-200 ease-in-out bg-blue-600 ${
                     !navigationOpen ? "!w-full delay-500" : "w-0"
                   }`}
                 ></span>
@@ -162,7 +132,7 @@ const Header = () => {
                   }`}
                 ></span>
                 <span
-                  className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm  duration-200 ease-in-out bg-blue-600 ${
+                  className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm duration-200 ease-in-out bg-blue-600 ${
                     !navigationOpen ? "!h-0 delay-200" : "h-0.5"
                   }`}
                 ></span>
@@ -171,7 +141,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Nav Menu Start */}
         <div
           className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-full ${
             navigationOpen &&
@@ -180,88 +149,63 @@ const Header = () => {
         >
           <nav>
             <ul className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-10">
-              {menuData.map((menuItem, key) => (
-                <li key={key} className={menuItem.submenu && "group relative"}>
-                  {menuItem.submenu ? (
-                    <>
-                      <button
-                        onClick={() => setDropdownToggler(!dropdownToggler)}
-                        className="flex cursor-pointer items-center justify-between gap-3  dark:text-white hover:text-primary"
-                      >
-                        {t(`menu.${menuItem.title.toLowerCase().replace(/\s+/g, '_')}`)}
-                        <span>
-                          <svg
-                            className="h-3 w-3 cursor-pointer fill-black dark:fill-white group-hover:fill-primary"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                          >
-                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                          </svg>
-                        </span>
-                      </button>
-
-                      <ul className={`dropdown ${dropdownToggler ? "flex" : ""}`}>
-                        {menuItem.submenu.map((item, key) => (
-                          <li key={key} className="hover:text-primary">
-                            <Link href={item.path || "#"}>
-                              {t(`menu.${item.title.toLowerCase().replace(/\s+/g, '_')}`)}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <Link
-                      href={`${menuItem.path}`}
-                      className={` dark:text-white ${
-                        pathUrl === menuItem.path ? "text-primary" : "hover:text-primary"
-                      }`}
-                    >
-                      {t(`menu.${menuItem.title.toLowerCase().replace(/\s+/g, '_')}`)}
-                    </Link>
-                  )}
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/"
+                  className={`dark:text-white ${
+                    pathUrl === "/" ? "text-primary" : "hover:text-primary"
+                  }`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className={`dark:text-white ${
+                    pathUrl === "/blog" ? "text-primary" : "hover:text-primary"
+                  }`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#features"
+                  className={`dark:text-white ${
+                    pathUrl === "/#features" ? "text-primary" : "hover:text-primary"
+                  }`}
+                >
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Docs"
+                  className={`dark:text-white ${
+                    pathUrl === "/Docs" ? "text-primary" : "hover:text-primary"
+                  }`}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#support"
+                  className={`dark:text-white ${
+                    pathUrl === "/support" ? "text-primary" : "hover:text-primary"
+                  }`}
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </nav>
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
+            {/* Theme Toggler Component */}
             <ThemeToggler />
-
-            {/* Language Dropdown */}
-            <div className="relative">
-              <select 
-                value={language}
-                onChange={(e) => changeLanguage(e.target.value)}
-                className="appearance-none bg-transparent text-regular font-medium text-waterloo dark:text-white hover:text-primary cursor-pointer"
-              >
-                <option value="en">{t('language_selector.en')}</option>
-                <option value="ta">{t('language_selector.ta')}</option>
-              </select>
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg 
-                  className="h-3 w-3 fill-black dark:fill-white" 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                </svg>
-              </span>
-            </div>
-
-            <Link
-              href="/auth/signin"
-              className="text-regular font-medium text-waterloo dark:fill-white hover:text-primary"
-            >
-              {t('login')}
-            </Link>
-
-            <Link
-              href="/auth/signup"
-              className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white dark:fill-white duration-300 ease-in-out hover:bg-primaryho"
-            >
-              {t('signup')}
-            </Link>
+            <AuthButtons isLogin={isLogin} onLogout={logout} />
           </div>
         </div>
       </div>

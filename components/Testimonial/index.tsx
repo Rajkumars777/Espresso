@@ -1,15 +1,66 @@
 "use client";
 import SectionHeader from "../Common/SectionHeader";
-
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { motion } from "framer-motion";
-import SingleTestimonial from "./SingleTestimonial";
-import { testimonialData } from "./testimonialData";
+import Image from "next/image";
+
+const testimonialData = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    designation: "Bride @SarahWedsMark",
+    image: "/images/user/user-01.png",
+    content:
+      "The team made our wedding day absolutely magical. From the decor to the seamless coordination, everything was handled perfectly. We didn’t have to worry about a thing!",
+  },
+  {
+    id: 2,
+    name: "Mark Roberts",
+    designation: "Groom @MarkWedsSarah",
+    image: "/images/user/user-02.png",
+    content:
+      "I can’t thank the team enough for organizing the perfect wedding. The attention to detail was impeccable, and they took care of everything, making it the most stress-free event of our lives.",
+  },
+  {
+    id: 3,
+    name: "Jessica Williams",
+    designation: "Event Manager @EventX",
+    image: "/images/user/user-01.png",
+    content:
+      "We partnered with this event management company for our corporate gala, and they exceeded all expectations. The planning, logistics, and execution were flawless. Highly recommend!",
+  },
+  {
+    id: 4,
+    name: "Michael Davis",
+    designation: "CEO @DavisCorporation",
+    image: "/images/user/user-02.png",
+    content:
+      "From the venue selection to the event day coordination, everything was perfect. Their team’s professionalism and dedication were outstanding, making our annual conference a success.",
+  },
+];
+
+const SingleTestimonial = ({ review }: { review: any }) => {
+  const { name, designation, image, content } = review;
+  return (
+    <div className="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none">
+      <div className="mb-7.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark">
+        <div>
+          <h3 className="mb-1.5 text-metatitle3 text-black dark:text-white">
+            {name}
+          </h3>
+          <p>{designation}</p>
+        </div>
+        <Image width={60} height={50} className="" src={image} alt={name} />
+      </div>
+
+      <p>{content}</p>
+    </div>
+  );
+};
 
 const Testimonial = () => {
   return (
@@ -22,7 +73,7 @@ const Testimonial = () => {
               headerInfo={{
                 title: `TESTIMONIALS`,
                 subtitle: `Client’s Testimonials`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+                description: `Our clients' feedback speaks volumes about our commitment to creating unforgettable events. Here’s what they have to say about us.`,
               }}
             />
           </div>
@@ -62,18 +113,16 @@ const Testimonial = () => {
               }}
               modules={[Autoplay, Pagination]}
               breakpoints={{
-                // when window width is >= 640px
                 0: {
                   slidesPerView: 1,
                 },
-                // when window width is >= 768px
                 768: {
                   slidesPerView: 2,
                 },
               }}
             >
               {testimonialData.map((review) => (
-                <SwiperSlide key={review?.id}>
+                <SwiperSlide key={review.id}>
                   <SingleTestimonial review={review} />
                 </SwiperSlide>
               ))}

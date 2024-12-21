@@ -1,11 +1,9 @@
-"use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 const Hero = () => {
-  const [email, setEmail] = useState("");
   const [dynamicWord, setDynamicWord] = useState("Unforgettable");
-
   const dynamicWords = [
     "Amazing",
     "Super",
@@ -31,6 +29,12 @@ const Hero = () => {
     return () => clearInterval(wordInterval); // Cleanup interval on unmount
   }, []);
 
+  useEffect(() => {
+    // Ensure the background image is reloaded when the component mounts
+    const image = new Image();
+    image.src = "./images/section0.jpg"; // Preload the background image
+  }, []); // Empty dependency array to ensure it runs once on mount
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -46,6 +50,18 @@ const Hero = () => {
       },
     },
   };
+  useEffect(() => {
+    const handleFocus = () => {
+      const image = new Image();
+      image.src = "./images/section0.jpg"; // Reload the background image when the page is focused
+    };
+
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+    };
+  }, []);
 
   return (
     <section
@@ -95,12 +111,16 @@ const Hero = () => {
             >
               <form onSubmit={handleSubmit} className="w-full max-w-md">
                 <div className="flex flex-wrap gap-5 justify-center">
-                  <button
-                    aria-label="get started button"
-                    className="flex rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-white hover:text-black dark:bg-btndark dark:hover:bg-white dark:hover:text-black"
+                  <Link
+                    href="/#features"
                   >
-                    Get Started
-                  </button>
+                    <button
+                      aria-label="get started button"
+                      className="flex rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-white hover:text-black dark:bg-btndark dark:hover:bg-white dark:hover:text-black"
+                    >
+                      Get Started
+                    </button>
+                  </Link>
                 </div>
               </form>
             </motion.div>
