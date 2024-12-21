@@ -53,7 +53,7 @@ const Hero = () => {
   useEffect(() => {
     const handleFocus = () => {
       const image = new Image();
-      image.src = "./images/section0.jpg"; // Reload the background image when the page is focused
+      image.src = "./images/section0.png"; // Reload the background image when the page is focused
     };
 
     window.addEventListener("focus", handleFocus);
