@@ -1,4 +1,4 @@
-
+"use client";
 import HeaderAdmin from "@/components/HeaderAdmin";
 import React, { useState } from 'react';
 import Image from "next/image";
