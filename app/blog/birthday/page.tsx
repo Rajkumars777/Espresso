@@ -7,9 +7,9 @@ import Header from "@/components/Header";
 import Lines from "@/components/Lines";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
-import { Toaster, toast } from 'react-hot-toast';
-import confetti from 'canvas-confetti';
-export const ToastProvider = () => {
+import { Toaster, toast } from "react-hot-toast";
+import confetti from "canvas-confetti";
+const ToastProvider = () => {
   return (
     <Toaster
       position="bottom-center"
@@ -22,7 +22,7 @@ export const ToastProvider = () => {
       }}
     />
   );
-}
+};
 const SingleBlogPage = () => {
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
