@@ -212,10 +212,10 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* <div className="mt-7 flex items-center gap-6 xl:mt-0">
+          <div className="mt-7 flex items-center gap-6 xl:mt-0">
             <ThemeToggler />
             <AuthButtons isLogin={isLogin} onLogout={logout} />
-          </div> */}
+          </div>
         </div>
       </div>
     </header>
