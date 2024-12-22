@@ -38,7 +38,7 @@ const BlogData = [
     title: "SCHOOL EVENT",
   },
   {
-    path:"cultural",
+    path: "cultural",
     mainImage: "/images/services/cultural.jpg",
     title: "CULTURAL EVENT ",
   },
@@ -71,27 +71,34 @@ const BlogData = [
 const BlogPage = async () => {
   return (
     <>
-     <ThemeProvider
-          enableSystem={false}
-          attribute="class"
-          defaultTheme="light"
-        >
-          <Lines />
-          <Header />
-      {/* <!-- ===== Blog Grid Start ===== --> */}
-      <section className="py-20 lg:py-25 xl:py-30">
-        <div className="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
-          <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-            {BlogData.map((post, key) => (
-              <BlogItem key={key} blog={post} />
-            ))}
-          </div>
+      <ThemeProvider enableSystem={false} attribute="class" defaultTheme="light">
+        <Lines />
+        <Header />
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+          {/* Hero Section */}
+          <div className="relative bg-blue-600 dark:bg-blue-800 text-white py-24 transition-colors duration-200">
+  <div className="container mt-12 mx-auto px-6">
+    <h1 className="text-5xl font-bold mb-6">Discover Our Premium Event Services</h1>
+    <p className="text-xl mb-8 max-w-2xl">
+      We specialize in curating unique and unforgettable events tailored to your needs. From grand celebrations to intimate gatherings, our services encompass everything to make your special moments extraordinary. Let us bring your vision to life with creativity, precision, and a touch of elegance.
+    </p>
+  </div>
+</div>
+
+          {/* Blog Grid */}
+          <section className="py-10 lg:py-15 xl:py-20">
+            <div className="mx-auto max-w-c-1280 px-4 md:px-8 xl:px-0">
+              <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+                {BlogData.map((post, key) => (
+                  <BlogItem key={key} blog={post} />
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-      {/* <!-- ===== Blog Grid End ===== --> */}
-      <Footer />
-          <ScrollToTop />
-        </ThemeProvider>
+        <Footer />
+        <ScrollToTop />
+      </ThemeProvider>
     </>
   );
 };

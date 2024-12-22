@@ -26,30 +26,33 @@ const BirthdayEventsPage = () => {
       <Lines />
       <Header />
       <div className="mt-14 from-blue-50 to-purple-100 dark:bg-black">
-        <div className="container mx-auto px-4 py-12 dark:bg-black">
-          {/* Hero Section */}
-          <div className="relative mb-12" style={{ height: "8cm" }}>
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-75 rounded-2xl"
-              style={{ backgroundImage: "url('../images/birthday-hero.jpg')" }}
-            ></div>
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
-              <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
-                  Plan Unforgettable Birthday Celebrations
-                </h1>
-                <p className="text-xl">
-                  From creative themes to flawless execution, we make your birthday events magical and memorable.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowBookingForm(!showBookingForm)}
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors mt-4 md:mt-0 shadow-lg"
-              >
-                {showBookingForm ? "Close Booking" : "Plan Your Birthday"}
-              </button>
-            </div>
-          </div>
+  <div className="container mx-auto px-4 py-12 dark:bg-black">
+    {/* Hero Section */}
+    <div className="relative mb-12" style={{ height: "8cm" }}>
+      {/* Background Image */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[8cm] bg-cover bg-center opacity-75 rounded-2xl"
+        style={{ backgroundImage: "url('../images/section0.jpg')" }}
+      ></div>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
+        <div className="md:w-2/3 space-y-4">
+          <h1 className="text-2xl font-bold flex items-center">
+            Plan Unforgettable Birthday Celebrations
+          </h1>
+          <p className="text-m">
+            From creative themes to flawless execution, we make your birthday events magical and memorable.
+          </p>
+        </div>
+        <button
+          onClick={() => setShowBookingForm(!showBookingForm)}
+          className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors mt-4 md:mt-0 shadow-lg"
+        >
+          {showBookingForm ? "Close Booking" : "Plan Your Birthday"}
+        </button>
+      </div>
+    </div>
+  
 
           {showBookingForm && (
             <div className="mt-8 animate-fadeIn">

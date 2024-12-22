@@ -46,7 +46,7 @@ const AuthButtons: React.FC<AuthButtonsProps> = ({ isLogin, onLogout }) => {
     <>
       <Link
         href="/auth/signin"
-        className="text-regular font-medium text-waterloo dark:fill-white hover:text-primary"
+        className="text-regular font-medium text-white dark:fill-white hover:text-primary"
       >
         {t("login")}
       </Link>

@@ -11,6 +11,7 @@ import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
@@ -26,7 +27,7 @@ export default function Home() {
       <Testimonial />
       <Pricing />
       <Contact />
-      
+      <Footer />
     </main>
   );
 }

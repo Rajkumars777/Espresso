@@ -1,4 +1,3 @@
-// components/Header.tsx
 'use client';
 import Image from "next/image";
 import Link from "next/link";
@@ -6,8 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import AuthButtons from "../AuthButtons"; // Import the AuthButtons component
-import { ThemeToggler } from '../ThemeToggler'; // Import ThemeToggler component
+import Docs from "../Docs";
+import AuthButtons from "../AuthButtons";
+import { ThemeToggler } from '../ThemeToggler';
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -76,11 +76,21 @@ const Header = () => {
       window.removeEventListener('scroll', handleStickyMenu);
     };
   }, []);
-
+  const getTextColorClasses = (isActive: boolean) => {
+    return `
+      transition-colors duration-300 
+      dark:text-white 
+      xl:${stickyMenu ? 'text-black' : 'text-white'}
+      max-xl:text-black
+      ${isActive ? "text-primary" : "hover:text-primary"}
+    `;
+  };
   return (
     <header
       className={`fixed left-0 top-0 z-99999 w-full py-7
-      ${stickyMenu ? "backdrop-blur-md bg-white/2 !py-4  transition-all duration-300 ease-in-out dark:bg-black/2" : "bg-transparent"}
+      ${stickyMenu 
+        ? "backdrop-blur-md bg-white/70 !py-4 transition-all duration-300 ease-in-out dark:bg-black/20" 
+        : "bg-transparent"}
       transition-all duration-300 ease-in-out`}
     >
       <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
@@ -144,7 +154,7 @@ const Header = () => {
         <div
           className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-full ${
             navigationOpen &&
-            "navbar !visible mt-4 h-auto max-h-[400px] rounded-md bg-white p-7.5 shadow-solid-5 dark:bg-blacksection xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
+            "navbar !visible mt-4 h-auto max-h-[400px] rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-7.5 shadow-solid-5 dark:bg-blacksection xl:h-auto xl:p-0 xl:shadow-none xl:dark:bg-transparent"
           }`}
         >
           <nav>
@@ -152,9 +162,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
-                  className={`dark:text-white ${
-                    pathUrl === "/" ? "text-primary" : "hover:text-primary"
-                  }`}
+                  className={`transition-colors duration-300 dark:text-white ${
+                    stickyMenu ? 'text-black' : 'text-white'
+                  } ${pathUrl === "/" ? "text-primary" : "hover:text-primary"}`}
                 >
                   Home
                 </Link>
@@ -162,9 +172,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/blog"
-                  className={`dark:text-white ${
-                    pathUrl === "/blog" ? "text-primary" : "hover:text-primary"
-                  }`}
+                  className={`transition-colors duration-300 dark:text-white ${
+                    stickyMenu ? 'text-black' : 'text-white'
+                  } ${pathUrl === "/blog" ? "text-primary" : "hover:text-primary"}`}
                 >
                   Services
                 </Link>
@@ -172,19 +182,19 @@ const Header = () => {
               <li>
                 <Link
                   href="/#features"
-                  className={`dark:text-white ${
-                    pathUrl === "/#features" ? "text-primary" : "hover:text-primary"
-                  }`}
+                  className={`transition-colors duration-300 dark:text-white ${
+                    stickyMenu ? 'text-black' : 'text-white'
+                  } ${pathUrl === "/#features" ? "text-primary" : "hover:text-primary"}`}
                 >
                   Features
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/Docs"
-                  className={`dark:text-white ${
-                    pathUrl === "/Docs" ? "text-primary" : "hover:text-primary"
-                  }`}
+                  href="/about"
+                  className={`transition-colors duration-300 dark:text-white ${
+                    stickyMenu ? 'text-black' : 'text-white'
+                  } ${pathUrl === "/about" ? "text-primary" : "hover:text-primary"}`}
                 >
                   About
                 </Link>
@@ -192,9 +202,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/#support"
-                  className={`dark:text-white ${
-                    pathUrl === "/support" ? "text-primary" : "hover:text-primary"
-                  }`}
+                  className={`transition-colors duration-300 dark:text-white ${
+                    stickyMenu ? 'text-black' : 'text-white'
+                  } ${pathUrl === "/support" ? "text-primary" : "hover:text-primary"}`}
                 >
                   Contact Us
                 </Link>
@@ -203,7 +213,6 @@ const Header = () => {
           </nav>
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
-            {/* Theme Toggler Component */}
             <ThemeToggler />
             <AuthButtons isLogin={isLogin} onLogout={logout} />
           </div>
