@@ -37,7 +37,7 @@ const ToastProvider = () => {
       position="top-center"
       containerStyle={{
         inset: 0,
-        top: '40%',
+        top: '50%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

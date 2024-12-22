@@ -59,7 +59,7 @@ Amazing!
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  hello@solid.com
+                  espresso@gmail.com
                 </a>
               </motion.div>
 
