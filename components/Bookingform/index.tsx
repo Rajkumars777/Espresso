@@ -472,7 +472,7 @@ const [loading, setLoading] = useState(false);
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 w-11/12 md:w-2/3">
       <h1 className="text-xl font-semibold mb-4">Terms and Conditions</h1>
-      <div className="text-sm space-y-4">
+      <div className="text-sm space-y-4 max-h-[70vh] overflow-y-auto">
         <section>
           <p className="mb-2">
             <strong>1. Service Engagement</strong><br />
@@ -543,6 +543,7 @@ const [loading, setLoading] = useState(false);
     </div>
   </div>
 )}
+
         <div className="md:col-span-2">
           <button
             className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
