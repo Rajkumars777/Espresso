@@ -34,10 +34,10 @@ interface FormData {
 const ToastProvider = () => {
   return (
     <Toaster
-      position="top-center"
+      position="bottom-center"
       containerStyle={{
         inset: 0,
-        top: '50%',
+        bottom: '50%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -137,7 +137,6 @@ const [loading, setLoading] = useState(false);
       ),
       {
         duration: 5000,
-        position: 'top-center'
       }
     );
   };
