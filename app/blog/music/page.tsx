@@ -35,10 +35,10 @@ const MusicEventPage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Create Unforgettable Musical Experiences
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   From intimate concerts to major music festivals, we bring your musical vision to life with professional event management
                 </p>
               </div>

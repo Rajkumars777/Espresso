@@ -35,10 +35,10 @@ const SchoolEventPage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Create Memorable School Events
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   From graduations to sports days, we help organize engaging and inspiring school events that students will remember forever
                 </p>
               </div>

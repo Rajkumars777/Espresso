@@ -35,10 +35,10 @@ const BabyShowerPage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Celebrate Your Special Arrival
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   Create magical moments with our expertly planned baby shower celebrations that bring joy to this precious time
                 </p>
               </div>

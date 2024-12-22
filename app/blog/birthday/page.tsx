@@ -37,7 +37,7 @@ const BirthdayEventsPage = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
         <div className="md:w-2/3 space-y-4">
-          <h1 className="text-2xl font-bold flex items-center">
+          <h1 className="text-xl font-bold flex items-center">
             Plan Unforgettable Birthday Celebrations
           </h1>
           <p className="text-m">

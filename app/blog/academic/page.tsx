@@ -35,10 +35,10 @@ const AcademicConferencePage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Host Impactful Academic Conferences
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   Facilitate scholarly discourse and research dissemination with our comprehensive academic conference management services
                 </p>
               </div>

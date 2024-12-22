@@ -35,10 +35,10 @@ const CorporateEventPage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Elevate Your Corporate Events
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   Deliver impactful corporate experiences with our professional event planning and execution services
                 </p>
               </div>

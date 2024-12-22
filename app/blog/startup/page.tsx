@@ -35,10 +35,10 @@ const StartupConferencePage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Empowering Startups & Investors
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   Join us for a dynamic conference that bridges the gap between groundbreaking startups and visionary investors.
                 </p>
               </div>

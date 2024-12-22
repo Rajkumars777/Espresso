@@ -35,10 +35,10 @@ const FashionShowPage = () => {
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
-                <h1 className="text-4xl font-bold flex items-center">
+                <h1 className="text-xl font-bold flex items-center">
                   Create Spectacular Fashion Shows
                 </h1>
-                <p className="text-xl">
+                <p className="text-m">
                   Transform your creative vision into an unforgettable runway experience with our professional fashion show production
                 </p>
               </div>
