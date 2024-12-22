@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Cake, GemIcon, Music, Camera, CalendarDays, PartyPopper } from "lucide-react"; // Replace with an appropriate icon library
+import { Briefcase, Target, Music, Camera, Calendar, Users } from "lucide-react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Lines from "@/components/Lines";
@@ -8,7 +8,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import Bookingform from "@/components/Bookingform";
 
-const BirthdayEventsPage = () => {
+const CorporateEventPage = () => {
   const [showBookingForm, setShowBookingForm] = useState(false);
 
   const ServiceCard = ({ title, description, icon }) => (
@@ -25,28 +25,28 @@ const BirthdayEventsPage = () => {
     <ThemeProvider enableSystem={false} attribute="class" defaultTheme="light">
       <Lines />
       <Header />
-      <div className="mt-14 from-blue-50 to-purple-100 dark:bg-black">
+      <div className="mt-14 from-blue-50 to-gray-100 dark:bg-black">
         <div className="container mx-auto px-4 py-12 dark:bg-black">
           {/* Hero Section */}
           <div className="relative mb-12" style={{ height: "8cm" }}>
             <div
               className="absolute inset-0 bg-cover bg-center opacity-75 rounded-2xl"
-              style={{ backgroundImage: "url('../images/birthday-hero.jpg')" }}
+              style={{ backgroundImage: "url('../images/section0.jpg')" }}
             ></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-14 text-white">
               <div className="md:w-2/3 space-y-4">
                 <h1 className="text-4xl font-bold flex items-center">
-                  Plan Unforgettable Birthday Celebrations
+                  Elevate Your Corporate Events
                 </h1>
                 <p className="text-xl">
-                  From creative themes to flawless execution, we make your birthday events magical and memorable.
+                  Deliver impactful corporate experiences with our professional event planning and execution services
                 </p>
               </div>
               <button
                 onClick={() => setShowBookingForm(!showBookingForm)}
                 className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors mt-4 md:mt-0 shadow-lg"
               >
-                {showBookingForm ? "Close Booking" : "Plan Your Birthday"}
+                {showBookingForm ? "Close Booking" : "Plan Your Event"}
               </button>
             </div>
           </div>
@@ -60,38 +60,38 @@ const BirthdayEventsPage = () => {
           {/* Services Grid */}
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-center mb-10 dark:text-white text-gray-800">
-              Our Birthday Event Services
+              Our Corporate Event Services
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <ServiceCard
-                title="Custom Themes"
-                icon={<Cake className="text-blue-600" />}
-                description="Design personalized themes that reflect your style and make your birthday celebration unique."
+                title="Conference Planning"
+                icon={<Briefcase className="text-blue-600" />}
+                description="Comprehensive conference management including venue selection, scheduling, and professional presentation setups."
               />
               <ServiceCard
-                title="Decor and Balloons"
-                icon={<GemIcon className="text-blue-600" />}
-                description="Create stunning decorations, balloon arrangements, and setups to bring your event to life."
+                title="Team Building Events"
+                icon={<Target className="text-blue-600" />}
+                description="Engaging team building activities and workshops designed to strengthen company culture and collaboration."
               />
               <ServiceCard
-                title="Music & Entertainment"
+                title="Event Management"
+                icon={<Calendar className="text-blue-600" />}
+                description="End-to-end event coordination including timeline management, vendor coordination, and logistics handling."
+              />
+              <ServiceCard
+                title="Audio-Visual Services"
                 icon={<Music className="text-blue-600" />}
-                description="Live performances, DJs, and fun activities to keep your guests entertained."
+                description="State-of-the-art AV equipment and technical support for presentations, speeches, and entertainment."
               />
               <ServiceCard
-                title="Photography & Videography"
+                title="Event Documentation"
                 icon={<Camera className="text-blue-600" />}
-                description="Capture every special moment with professional photography and videography services."
+                description="Professional photography and videography services to capture key moments and create event highlight reels."
               />
               <ServiceCard
-                title="Event Planning"
-                icon={<CalendarDays className="text-blue-600" />}
-                description="Comprehensive event planning to ensure every detail is taken care of seamlessly."
-              />
-              <ServiceCard
-                title="Party Favors"
-                icon={<PartyPopper className="text-blue-600" />}
-                description="Customized party favors and return gifts that leave a lasting impression on your guests."
+                title="Attendee Management"
+                icon={<Users className="text-blue-600" />}
+                description="Comprehensive registration management, badge printing, seating arrangements, and corporate hospitality services."
               />
             </div>
           </div>
@@ -101,11 +101,11 @@ const BirthdayEventsPage = () => {
             <h2 className="text-3xl font-bold mb-6 dark:text-white text-gray-800">Why Choose Us?</h2>
             <blockquote className="text-xl italic dark:text-white text-gray-600 max-w-2xl mx-auto flex items-center justify-center">
               <svg className="w-10 h-10 text-blue-500 mr-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9.983 3v7.395c0 5.704-3.731 9.57-9.983 10.605l-.995-2.151c2.432-.917 3.995-3.627 3.995-5.849h-4v-10h11zm14.017 0v7.395c0 5.704-3.731 9.57-9.983 10.605l-.995-2.151c-2.432-.917-3.995-3.627-3.995-5.849h4v-10h11z" />
+                <path d="M9.983 3v7.395c0 5.704-3.731 9.57-9.983 10.605l-.995-2.151c2.432-.917 3.995-3.627 3.995-5.849h-4v-10h11zm14.017 0v7.395c0 5.704-3.731 9.57-9.983 10.605l-.995-2.151c2.432-.917 3.995-3.627 3.995-5.849h-4v-10h11z" />
               </svg>
-              "We bring joy, creativity, and precision to every birthday celebration, ensuring a magical and stress-free experience for you and your guests."
+              "We deliver exceptional corporate events that align with your business objectives. Our experienced team ensures seamless execution and professional excellence in every detail."
               <svg className="w-10 h-10 text-blue-500 ml-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 3v7.395c0 5.704 3.731 9.57 9.983 10.605l.995-2.151c-2.432-.917-3.995-3.627-3.995-5.849h4v-10h-11zm-14.017 0v7.395c0 5.704-3.731 9.57 9.983 10.605l.995-2.151c-2.432-.917-3.995-3.627-3.995-5.849h4v-10h-11z" />
+                <path d="M14.017 3v7.395c0 5.704 3.731 9.57 9.983 10.605l.995-2.151c-2.432-.917-3.995-3.627-3.995-5.849h4v-10h-11zm-14.017 0v7.395c0 5.704 3.731 9.57 9.983 10.605l.995-2.151c-2.432-.917-3.995-3.627-3.995-5.849h4v-10h-11z" />
               </svg>
             </blockquote>
           </div>
@@ -117,4 +117,4 @@ const BirthdayEventsPage = () => {
   );
 };
 
-export default BirthdayEventsPage;
+export default CorporateEventPage;
